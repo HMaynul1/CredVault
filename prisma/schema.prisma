@@ -1,0 +1,22 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Zero-knowledge: we store only the account's login hash + an
+// opaque, fully client-side-encrypted vault blob. The server can
+// never decrypt vault contents.
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  salt         String   // PBKDF2 salt used client-side to derive the vault encryption key
+  vaultIv      String?  // AES-GCM IV of the encrypted vault blob
+  vaultData    String?  // AES-GCM ciphertext of the vault blob (base64), opaque to server
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

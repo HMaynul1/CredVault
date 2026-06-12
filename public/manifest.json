@@ -1,0 +1,14 @@
+{
+  "name": "CrdxCube — Zero-Knowledge Credential Vault",
+  "short_name": "CrdxCube",
+  "description": "Privacy-first, zero-knowledge, client-side encrypted credential manager with OCR, camera import, and export.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f1f",
+  "theme_color": "#0b0f1f",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
